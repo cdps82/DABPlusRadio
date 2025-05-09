@@ -1,6 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.dabplusradio">
-    
+
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
 
     <application android:label="DAB+ Radio" android:theme="@style/Theme.AppCompat.Light.NoActionBar">
@@ -13,4 +13,5 @@
             </intent-filter>
         </activity>
     </application>
+
 </manifest>
