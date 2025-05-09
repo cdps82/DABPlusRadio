@@ -1,0 +1,29 @@
+name: Generate Gradle Wrapper
+
+on:
+  workflow_dispatch:
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up JDK
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
+      - name: Generate wrapper
+        run: |
+          gradle wrapper
+          zip -j gradle-wrapper.zip gradle/wrapper/gradle-wrapper.jar gradle/wrapper/gradle-wrapper.properties
+
+      - name: Upload wrapper as artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: gradle-wrapper
+          path: gradle-wrapper.zip
